@@ -4,10 +4,10 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between mt-5 w-full items-center sticky p-4 bg-[#E9EBED] rounded-full">
-      <h2 className="text-2xl">Aman Tech</h2>
+    <div className="flex justify-between mt-5 w-full items-center sticky p-5 px-10 bg-[#E9EBED] rounded-full">
+      <h2 className="text-2xl">AK Tech</h2>
       <div className="">
-        <ul className="flex gap-5">
+        <ul className="flex gap-5 text-lg">
           <li className="cursor-pointer">Home</li>
           <li className="cursor-pointer">Product</li>
           <li className="cursor-pointer">Category</li>
