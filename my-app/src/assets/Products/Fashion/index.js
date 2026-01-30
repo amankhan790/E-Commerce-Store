@@ -1,0 +1,23 @@
+import fashionImage1 from './sleev shirt.jpg';
+import fashionImage2 from "./yellow traiksoot.jpg";
+
+export const FashionProducts = [
+    {
+        id: 401,
+        img: fashionImage1,
+        rating: 4.5,
+        name: "Sleeve Shirt",
+        price: 29.99,
+        description: "A comfortable and stylish sleeve shirt for everyday wear.",
+        category: "Fashion",
+    },
+    {
+        id: 402,
+        img: fashionImage2,
+        rating: 4.2,
+        name: "Yellow Track Suit",
+        price: 49.99,
+        description: "A vibrant yellow track suit perfect for casual outings.",
+        category: "Fashion",
+    },
+];

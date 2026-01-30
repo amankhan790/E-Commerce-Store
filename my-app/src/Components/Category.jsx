@@ -1,10 +1,10 @@
 import React from "react";
-import categoryImages from "../assets/assets";
+import {categoryImages} from "../assets/assets";
 
 const Category = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center mt-10 mb-10 text-[#111827]">
+      <h1 className="text-3xl font-bold items-start mt-10 mb-10 text-[var(--text-color)]">
         Shop by Category
       </h1>
       <div className="flex justify-center gap-5 mb-10 ">

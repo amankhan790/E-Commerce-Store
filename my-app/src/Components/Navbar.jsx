@@ -5,9 +5,9 @@ import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
   return (
     <div className="flex justify-between mt-5 w-full items-center sticky p-5 px-10 bg-[#E9EBED] rounded-full">
-      <h2 className="text-2xl">AK Tech</h2>
+      <h2 className="text-2xl text-[var(--text-color)]">AK Tech</h2>
       <div className="">
-        <ul className="flex gap-5 text-lg">
+        <ul className="flex gap-5 text-lg text-[var(--text-color)]">
           <li className="cursor-pointer">Home</li>
           <li className="cursor-pointer">Product</li>
           <li className="cursor-pointer">Category</li>
@@ -15,12 +15,14 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-10">
         <div className="flex items-center">
-          <FaShoppingCart className="mr-2 text-2xl" />
-          <span className="cursor-pointer">Cart</span>
+          <FaShoppingCart className="mr-2 text-2xl " />
+          <span className="cursor-pointer text-[var(--text-color)]">Cart</span>
         </div>
         <div className="flex items-center">
           <FaRegUser className="mr-2 text-2xl" />
-          <button className="cursor-pointer">Login</button>
+          <button className="cursor-pointer text-[var(--text-color)]">
+            Login
+          </button>
         </div>
       </div>
     </div>
