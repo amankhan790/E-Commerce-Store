@@ -8,7 +8,7 @@ export const AccessoriesProducts = [
         id: 1,
         img: accessories1,
         rating: 4.5,
-        name: "Fast Charging Phone Charger",
+        name: "Phone Charger",
         price: 19.99,
         description: "A high-speed charger compatible with most smartphones.",
         category: "Accessories",
@@ -16,7 +16,7 @@ export const AccessoriesProducts = [
     {
         id: 2,
         img: accessories2,
-        rating: 4.0,
+        rating: 4.1,
         name: "Durable Phone Cover",
         price: 14.99,
         description: "A protective cover designed for durability and style.",

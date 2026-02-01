@@ -7,14 +7,14 @@ const Trending = () => {
   return (
     <div>
       <h1 className="text-3xl font-bold items-start mb-10 pt-10">
-        Trending Products
+        Browse Products
       </h1>
       <div>
-        <div className="grid grid-cols-4 gap-5">
-          {AllProducts.slice(5, 15).map((product) => (
+        <div className="grid grid-cols-4 gap-5 h-auto">
+          {AllProducts.map((product) => (
             <div
               key={product.id}
-              className="border-2 border-[var(--text-color)] rounded-2xl p-4 hover:shadow-lg hover:scale-105 duration-300"
+              className="border-2 border-[var(--text-color)] rounded-2xl p-4 hover:shadow-lg hover:scale-105 duration-300 relative"
             >
               <img
                 src={product.img}
@@ -33,10 +33,13 @@ const Trending = () => {
                   {product.rating}
                 </span>
               </div>
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-sm text-gray-600 mb-5 pb-10">
                 Description: {product.description}
               </p>
-              <p className="text-sm text-gray-600">${product.price}</p>
+              <div className="absolute bottom-4 mt-10 justify-around w-full flex justify-between pr-10">
+                <p className="text-lg text-gray-600">${product.price}</p>
+                <button className="w-[80px] font-bold bg-gray-500 px-5 py-2 rounded-lg hover:bg-[var(--text-color)] hover:text-white transition-ease-in-out duration-300">Add</button>
+              </div>
             </div>
           ))}
         </div>
