@@ -9,7 +9,7 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: none;
+  /* scrollbar-width: none; */
 }
 body {
   margin: 0;
@@ -18,11 +18,11 @@ body {
   font-weight: 300;
   background-color: var(--background-color);
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
 .app {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: auto;
 }
 .hero-img {
