@@ -1,7 +1,6 @@
 import React from "react";
 import { AllProducts } from "../assets/assets";
 import { FaStar } from "react-icons/fa";
-import { categoryImages } from "../assets/assets";
 
 const Trending = () => {
   return (

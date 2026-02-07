@@ -2,6 +2,7 @@ import accessories1 from "./phone charger.jpg";
 import accessories2 from "./phone cover 2.jpg";
 import accessories3 from "./phone cover.jpg";
 import accessories4 from "./power bank.jpg";
+import accessories5 from "./belt.jpg";
 
 export const AccessoriesProducts = [
     {
@@ -40,4 +41,13 @@ export const AccessoriesProducts = [
         description: "A compact power bank for charging devices on the go.",
         category: "Accessories",
     },
+    {
+        id: 5,
+        img: accessories5,
+        rating: 4.5,
+        name: "Belt For Men",
+        price: 19.99,
+        description: "A stylish belt made from high-quality leather.",
+        category: "Accessories",
+    }
 ];

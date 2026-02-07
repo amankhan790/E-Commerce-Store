@@ -44,3 +44,9 @@ body {
   width: 50%;
   height: 500px;
 }
+.active {
+  background-color:  var(--primary-color);
+  color: black;
+  border: 2px solid black;
+  font-weight: bold;
+}

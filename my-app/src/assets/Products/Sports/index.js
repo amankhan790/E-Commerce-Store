@@ -1,5 +1,5 @@
 import sportImage1 from "./football.jpg";
-import sportImage2 from "./tennis racket and ball.jpg";;
+import sportImage2 from "./tennis racket and ball.jpg";
 
 export const SportsProducts = [
     {

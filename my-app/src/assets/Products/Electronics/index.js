@@ -4,6 +4,8 @@ import electronic3 from "./earphones.jpg";
 import electronic4 from "./keyboard.jpg";
 import electronic5 from "./smart watch.jpg";
 import electronic6 from "./sony headphone.jpg";
+import electronic7 from "./iphone.jpg";
+
 
 export const ElectronicsProducts = [
     {
@@ -60,4 +62,13 @@ export const ElectronicsProducts = [
         description: "Industry-leading noise cancelling over-ear headphones with exceptional sound quality.",
         category: "Electronics",
     },
+    {
+        id: 307,
+        img: electronic7,
+        rating: 4.9,
+        name: "iPhone 15 Pro",
+        price: 999.99,
+        description: "The latest iPhone with advanced camera capabilities and powerful performance.",
+        category: "Electronics",
+    }
 ];

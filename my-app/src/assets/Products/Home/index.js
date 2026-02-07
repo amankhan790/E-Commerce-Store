@@ -3,6 +3,8 @@ import home2 from "./green plant.jpg";
 import home3 from "./kitchen cabinet.jpg";
 import home4 from "./sofa.jpg";
 import home5 from "./table.jpg";
+import home6 from "./interior.jpg";
+
 
 export const HomeProducts = [
     {
@@ -51,4 +53,13 @@ export const HomeProducts = [
         description: "A sturdy and elegant dining table for family meals.",
         category: "Home",
     },
+    {
+        id: 106,
+        img: home6,
+        rating: 4.7,
+        name: "Interior Decor",
+        price: 149.99,
+        description: "A stylish interior decor piece that adds charm to your home.",
+        category: "Home",
+    }
 ];

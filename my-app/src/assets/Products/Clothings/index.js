@@ -1,5 +1,6 @@
 import cloth1 from "./hoodie.jpg";
 import cloth2 from "./t-shirt.jpg";
+import cloth3 from "./sweater.jpg";
 
 export const ClothingProducts = [
     {
@@ -20,4 +21,13 @@ export const ClothingProducts = [
         description: "A comfortable and versatile t-shirt for everyday use.",
         category: "Clothing",
     },
+    {
+        id: 203,
+        img: cloth3,
+        rating: 4.8,
+        name: "Warm Sweater",
+        price: 49.99,
+        description: "A soft and warm sweater perfect for chilly days.",
+        category: "Clothing",
+    }
 ];

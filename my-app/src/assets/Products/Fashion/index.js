@@ -1,5 +1,6 @@
 import fashionImage1 from './sleev shirt.jpg';
 import fashionImage2 from "./yellow traiksoot.jpg";
+import fashionImage3 from "./glasses.jpg";
 
 export const FashionProducts = [
     {
@@ -18,6 +19,15 @@ export const FashionProducts = [
         name: "Yellow Track Suit",
         price: 49.99,
         description: "A vibrant yellow track suit perfect for casual outings.",
+        category: "Fashion",
+    },
+    {
+        id: 403,
+        img: fashionImage3,
+        rating: 4.8,
+        name: "Stylish Glasses",
+        price: 19.99,
+        description: "Trendy glasses that add a touch of sophistication to your look.",
         category: "Fashion",
     },
 ];
