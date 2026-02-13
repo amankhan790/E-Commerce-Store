@@ -2,7 +2,7 @@ import React from "react";
 import { AllProducts } from "../assets/assets";
 import { FaStar } from "react-icons/fa";
 
-const Trending = () => {
+const Trending = ({}) => {
   return (
     <div>
       <h1 className="text-3xl font-bold items-start mb-10 pt-10">
@@ -37,7 +37,9 @@ const Trending = () => {
               </p>
               <div className="absolute bottom-4 mt-10 justify-around w-full flex justify-between pr-10">
                 <p className="text-lg text-gray-600">${product.price}</p>
-                <button className="w-[80px] font-bold bg-gray-500 px-5 py-2 rounded-lg hover:bg-[var(--text-color)] hover:text-white transition-ease-in-out duration-300">Add</button>
+                <button className="w-[80px] font-bold bg-gray-500 px-5 py-2 rounded-lg hover:bg-[var(--text-color)] hover:text-white transition-ease-in-out duration-300">
+                  Add
+                </button>
               </div>
             </div>
           ))}

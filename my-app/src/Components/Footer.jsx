@@ -16,16 +16,16 @@ const Footer = () => {
         <div>
           <h1 className="text-xl font-bold mb-5">Shop</h1>
           <ul className="flex flex-col gap-2">
-            <li className="cursor-pointer hover:font-bold">All Product</li>
-            <li className="cursor-pointer hover:font-bold">Electronics</li>
-            <li className="cursor-pointer hover:font-bold">Clothing</li>
-            <li className="cursor-pointer hover:font-bold">Accessories</li>
+            <li className="cursor-pointer w-40 hover:font-bold">All Product</li>
+            <li className="cursor-pointer w-40 hover:font-bold">Electronics</li>
+            <li className="cursor-pointer w-40 hover:font-bold">Clothing</li>
+            <li className="cursor-pointer w-40 hover:font-bold">Accessories</li>
           </ul>
         </div>
 
         <div>
           <h1 className="text-xl font-bold mb-5">Company</h1>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-2 ">
             <li className="cursor-pointer hover:font-bold">About Us</li>
             <li className="cursor-pointer hover:font-bold">Careers</li>
             <li className="cursor-pointer hover:font-bold">Contact</li>
@@ -39,15 +39,15 @@ const Footer = () => {
       <div className="text-sm text-[--text-color] flex justify-between items-center pb-10">
         &copy; {new Date().getFullYear()} Ak Tech. All rights reserved.
         <ul className="flex gap-5 text-xl">
-          <l className="cursor-pointer hover:opacity-70 transition-all">
+          <li className="cursor-pointer hover:opacity-70 transition-all">
             <FaFacebookSquare />
-          </l>
-          <l className="cursor-pointer hover:opacity-70 transition-all">
+          </li>
+          <li className="cursor-pointer hover:opacity-70 transition-all">
             <GrInstagram />
-          </l>
-          <l className="cursor-pointer hover:opacity-70 transition-all">
+          </li>
+          <li className="cursor-pointer hover:opacity-70 transition-all">
             <FaXTwitter />
-          </l>
+          </li>
         </ul>
       </div>
     </>
