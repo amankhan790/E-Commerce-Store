@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
       <hr className="border-1 bg-[--text-color] mb-5 mt-15" />
-      <div className="bg-white-200 w-full h-7xl flex justify-between gap-20 mt-10 mb-10">
+      <div className="bg-white-200 w-full h-7xl flex justify-between gap-20 md:gap-10 mt-10 mb-10 flex-wrap">
         <div>
           <h1 className="text-xl font-bold mb-5">Ak Tech</h1>
           <p>Smart Shopping Made Simple.</p>
@@ -36,9 +36,9 @@ const Footer = () => {
 
       <hr className="border-1 bg-[--text-color] mb-5" />
 
-      <div className="text-sm text-[--text-color] flex justify-between items-center pb-10">
+      <div className="text-sm text-[--text-color] text-center sm:flex justify-between items-center pb-10">
         &copy; {new Date().getFullYear()} Ak Tech. All rights reserved.
-        <ul className="flex gap-5 text-xl">
+        <ul className="flex gap-5 text-xl justify-center mt-5">
           <li className="cursor-pointer hover:opacity-70 transition-all">
             <FaFacebookSquare />
           </li>
