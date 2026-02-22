@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Hero from "../Components/Hero";
 import Category from "../Components/Category";
-import Trending from "../Components/Trending";
 import { AllProducts } from "../assets/assets";
+import TrendingProducts from "../Components/TrendingProducts";
 
 const Home = () => {
   const [selectedCategories, setSelectedCategories] = useState("All");
@@ -19,7 +19,7 @@ const Home = () => {
         selectedCategories={selectedCategories}
         setSelectedCategories={setSelectedCategories}
       />
-      <Trending filterProducts={filterProducts} />
+      {/* <TrendingProducts /> */}
     </>
   );
 };

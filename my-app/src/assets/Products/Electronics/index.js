@@ -16,6 +16,7 @@ export const ElectronicsProducts = [
         price: 249.99,
         description: "Wireless earbuds with active noise cancellation and superior sound quality.",
         category: "Electronics",
+        trending: true
     },
     {
         id: 302,

@@ -18,9 +18,9 @@ export const categories = {
 
 export const AllProducts = [
     ...AccessoriesProducts,
-    ...ClothingProducts,
-    ...ElectronicsProducts,
-    ...HomeProducts,
-    ...SportsProducts,
-    ...FashionProducts,
+    // ...ClothingProducts,
+    // ...ElectronicsProducts,
+    // ...HomeProducts,
+    // ...SportsProducts,
+    // ...FashionProducts,
 ];

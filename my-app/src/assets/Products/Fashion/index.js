@@ -20,6 +20,7 @@ export const FashionProducts = [
         price: 49.99,
         description: "A vibrant yellow track suit perfect for casual outings.",
         category: "Fashion",
+        trending: true
     },
     {
         id: 403,

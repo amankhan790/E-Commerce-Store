@@ -1,16 +1,24 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 import { AllProducts } from "../assets/assets";
 
-const StoreContext = createContext(null);
-
+export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
-  const contextValue = {
-    AllProducts,
+  const [products, setProducts] = useState(AllProducts);
+
+  const getProductById = (id) => {
+    return products.find((product) => product.id === Number(id));
   };
+
+  const contextValue = {
+    products,
+    setProducts,
+    getProductById,
+  };
+
   return (
-    <StoreContextProvider.Provider value={contextValue}>
+    <StoreContext.Provider value={contextValue}>
       {props.children}
-    </StoreContextProvider.Provider>
+    </StoreContext.Provider>
   );
 };
 

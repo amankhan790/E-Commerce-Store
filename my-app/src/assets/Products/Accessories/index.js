@@ -13,6 +13,7 @@ export const AccessoriesProducts = [
         price: 19.99,
         description: "A high-speed charger compatible with most smartphones.",
         category: "Accessories",
+        trending: true
     },
     {
         id: 2,
@@ -22,6 +23,7 @@ export const AccessoriesProducts = [
         price: 14.99,
         description: "A protective cover designed for durability and style.",
         category: "Accessories",
+        
     },
     {
         id: 3,

@@ -11,6 +11,7 @@ export const ClothingProducts = [
         price: 39.99,
         description: "A cozy and stylish hoodie perfect for casual wear.",
         category: "Clothing",
+        trending: true
     },
     {
         id: 202,
