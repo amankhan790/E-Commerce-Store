@@ -34,11 +34,9 @@ const ProductCard = ({ product }) => {
             </p>
 
             <div className="flex justify-between items-center gap-3 mt-auto">
-              <p className="text-lg font-semibold text-gray-700">${product.price}</p>
-
-              <button className="font-bold bg-gray-500 px-5 py-2 rounded-lg hover:bg-[var(--text-color)] hover:text-white transition duration-300 whitespace-nowrap">
-                Add
-              </button>
+              <p className="text-lg font-semibold text-gray-700">
+                ${product.price}
+              </p>
             </div>
           </div>
         </Link>
