@@ -19,7 +19,7 @@ const Home = () => {
         selectedCategories={selectedCategories}
         setSelectedCategories={setSelectedCategories}
       />
-      {/* <TrendingProducts /> */}
+      <TrendingProducts />
     </>
   );
 };

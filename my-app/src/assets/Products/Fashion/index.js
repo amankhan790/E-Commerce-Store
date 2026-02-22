@@ -11,6 +11,7 @@ export const FashionProducts = [
         price: 29.99,
         description: "A comfortable and stylish sleeve shirt for everyday wear.",
         category: "Fashion",
+        trending: true
     },
     {
         id: 402,
@@ -20,7 +21,6 @@ export const FashionProducts = [
         price: 49.99,
         description: "A vibrant yellow track suit perfect for casual outings.",
         category: "Fashion",
-        trending: true
     },
     {
         id: 403,

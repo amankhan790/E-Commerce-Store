@@ -23,7 +23,6 @@ export const AccessoriesProducts = [
         price: 14.99,
         description: "A protective cover designed for durability and style.",
         category: "Accessories",
-        
     },
     {
         id: 3,
