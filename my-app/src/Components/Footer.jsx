@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
       <hr className="border-1 bg-[--text-color] mb-5 mt-15" />
-      <div className="bg-white-200 w-full h-7xl flex justify-between gap-20 md:gap-10 mt-10 mb-10 flex-wrap">
+      <div className="bg-white-200 w-full h-7xl flex justify-between gap-20 md:gap-10 mt-10 mb-10 flex-wrap pr-25">
         <div>
           <h1 className="text-xl font-bold mb-5">Ak Tech</h1>
           <p>Smart Shopping Made Simple.</p>
