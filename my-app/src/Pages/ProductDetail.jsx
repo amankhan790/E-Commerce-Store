@@ -13,7 +13,6 @@ import {
 const ProductDetail = () => {
   const { id } = useParams();
   const { getProductById } = useContext(StoreContext);
-  const [qty, setQty] = useState(1);
 
   const product = getProductById(id);
 
@@ -115,32 +114,7 @@ const ProductDetail = () => {
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row items-center sm:items-stretch gap-4">
-              <div className="flex items-center bg-gray-700 border border-gray-200 rounded-lg px-2">
-                <button
-                  onClick={() => setQty((q) => Math.max(0, q - 1))}
-                  className="p-2 text-white"
-                  aria-label="decrease"
-                >
-                  <FaMinus />
-                </button>
-                <input
-                  type="number"
-                  value={qty}
-                  onChange={(e) =>
-                    setQty(Math.max(1, Number(e.target.value || 1)))
-                  }
-                  className="w-16 text-center text-white bg-transparent outline-none"
-                />
-                <button
-                  onClick={() => setQty((q) => q + 1)}
-                  className="p-2 text-white"
-                  aria-label="increase"
-                >
-                  <FaPlus />
-                </button>
-              </div>
-
-              <button className="flex-1 bg-gray-900 hover:bg-gray-700 text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-3">
+              <button className="flex-1 w-full bg-gray-900 hover:bg-gray-700 text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
