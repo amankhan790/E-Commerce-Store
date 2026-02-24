@@ -1,4 +1,11 @@
-const Category = ({ selectedCategories, setSelectedCategories }) => {
+import { useState, useContext } from "react";
+import { StoreContext } from "../Context/StoreContext";
+import { useNavigate } from "react-router-dom";
+
+const Category = ({ navigateOnClick = false, selectedCategories: outerSelected, setSelectedCategories: outerSetSelected }) => {
+  const { filterByCategory } = useContext(StoreContext);
+  const navigate = useNavigate();
+  const [selectedCategories, setSelectedCategories] = useState("All");
   const categories = [
     "All",
     "Electronics",
@@ -9,6 +16,9 @@ const Category = ({ selectedCategories, setSelectedCategories }) => {
     "Clothing",
   ];
 
+  const isControlled = typeof outerSelected !== "undefined" && typeof outerSetSelected === "function";
+  const currentSelected = isControlled ? outerSelected : selectedCategories;
+
   return (
     <div>
       <h1 className="text-3xl font-bold items-start mb-10 pt-10">
@@ -18,10 +28,15 @@ const Category = ({ selectedCategories, setSelectedCategories }) => {
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => setSelectedCategories(cat)}
+            onClick={() => {
+              const setSel = isControlled ? outerSetSelected : setSelectedCategories;
+              setSel(cat);
+              filterByCategory(cat);
+              if (navigateOnClick) navigate("/products");
+            }}
             className={`px-7 py-2 rounded-xl font-medium cursor-pointer
               ${
-                selectedCategories === cat
+                currentSelected === cat
                   ? "bg-black text-white"
                   : "bg-gray-200 text-black"
               }`}

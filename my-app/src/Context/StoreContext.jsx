@@ -9,10 +9,22 @@ const StoreContextProvider = (props) => {
     return products.find((product) => product.id === Number(id));
   };
 
+  const filterByCategory = (category) => {
+    if (!category || category === "All") {
+      setProducts(AllProducts);
+      return;
+    }
+    const filtered = AllProducts.filter(
+      (product) => product.category === category,
+    );
+    setProducts(filtered);
+  };
+
   const contextValue = {
     products,
     setProducts,
     getProductById,
+    filterByCategory,
   };
 
   return (

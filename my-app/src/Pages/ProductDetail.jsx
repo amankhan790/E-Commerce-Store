@@ -117,7 +117,7 @@ const ProductDetail = () => {
             <div className="mt-6 flex flex-col sm:flex-row items-center sm:items-stretch gap-4">
               <div className="flex items-center bg-gray-700 border border-gray-200 rounded-lg px-2">
                 <button
-                  onClick={() => setQty((q) => Math.max(1, q - 1))}
+                  onClick={() => setQty((q) => Math.max(0, q - 1))}
                   className="p-2 text-white"
                   aria-label="decrease"
                 >

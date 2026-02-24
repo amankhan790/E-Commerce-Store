@@ -37,15 +37,21 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex">
           <ul className="flex gap-5 md:gap-8 text-base md:text-lg text-[--text-color]">
-            <li className="cursor-pointer hover:font-semibold transition-300">
-              Home
-            </li>
-            <li className="cursor-pointer hover:font-semibold transition-300">
-              Product
-            </li>
-            <li className="cursor-pointer hover:font-semibold transition-300">
-              Category
-            </li>
+            <Link to={"/"}>
+              <li className="cursor-pointer hover:font-semibold transition-300">
+                Home
+              </li>
+            </Link>
+            <Link to={"/products"}>
+              <li className="cursor-pointer hover:font-semibold transition-300">
+                Product
+              </li>
+            </Link>
+            <Link to={"/about"}>
+              <li className="cursor-pointer hover:font-semibold transition-300">
+                About
+              </li>
+            </Link>
           </ul>
         </div>
 
