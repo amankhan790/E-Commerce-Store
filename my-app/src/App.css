@@ -9,7 +9,7 @@
 
 html {
   scroll-behavior: smooth;
-  /* scrollbar-width: none; */
+  scrollbar-width: none;
 }
 body {
   margin: 0;
