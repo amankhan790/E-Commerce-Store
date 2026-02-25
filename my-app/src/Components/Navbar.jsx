@@ -56,22 +56,17 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Icons */}
-        <div className="hidden md:flex items-center gap-8 lg:gap-10">
+        <div className="hidden md:flex items-center gap-3">
           <div className="flex items-center gap-2 cursor-pointer hover:opacity-70 transition-all">
             <Link to="/cart">
               <FaShoppingCart className="text-lg md:text-2xl" />
             </Link>
-            <Link to="/cart">
-              <span className="text-base md:text-lg text-[--text-color]">
-                Cart
-              </span>
-            </Link>
           </div>
-          <div className="flex items-center gap-2 hover:opacity-70 transition-all cursor-pointer">
+          <div className="flex items-center gap-2 hover:opacity-70 transition-all cursor-pointer bg-[#c8d3d7] rounded-sm px-4 py-1">
             <Link to="/login" className="flex items-center gap-2">
               <FaRegUser className="text-lg md:text-2xl" />
               <button className="cursor-pointer text-base md:text-lg text-[--text-color] hover:opacity-70 transition-all">
-                Login
+                Sign-in
               </button>
             </Link>
           </div>
@@ -82,7 +77,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2 cursor-pointer">
             <FaShoppingCart className="text-xl" />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 cursor-pointer">
             <FaRegUser className="text-xl" />
           </div>
           <button
