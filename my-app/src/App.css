@@ -23,66 +23,9 @@ body {
   max-width: 80%;
   margin: auto;
 }
-.hero-img {
-  background-image: url("./assets/Images/hero1.jpg");
-  background-size: cover;
-  background-position: end;
-  width: 75%;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  color: white;
-  padding: 2rem;
-  box-sizing: border-box;
-}
-.hero2-img {
-  background-image: url("./assets/Images/hero4.jpg");
-  background-size: cover;
-  background-position: center;
-  width: 50%;
-  height: 500px;
-}
-.active {
-  background-color: var(--primary-color);
-  color: black;
-  border: 2px solid black;
-  font-weight: bold;
-}
-@media (max-width: 640px) {
-  .app {
-    max-width: 90%;
-  }
-  .hero-img {
-    width: 100%;
-    height: 320px;
-    align-items: flex-end;
-    padding: 1.2rem;
-    background-position: center;
-  }
-  .hero-img h1 {
-    font-size: 2rem;
-    text-align: left;
-  }
-  .hero-img p {
-    font-size: 1rem;
-    text-align: left;
-  }
-  .hero2-img {
-    display: none;
-  }
-}
 
 @media (max-width: 1024px) {
-  .hero-img {
-    width: 100%;
-    height: 380px;
-    padding: 1.5rem;
-    flex-direction: column;
-    background-position: center;
-  }
-  .hero2-img {
-    display: none;
+  .app {
+    max-width: 90%;
   }
 }

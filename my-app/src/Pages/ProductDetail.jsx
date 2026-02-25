@@ -114,7 +114,7 @@ const ProductDetail = () => {
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row items-center sm:items-stretch gap-4">
-              <button className="flex-1 w-full bg-gray-900 hover:bg-gray-700 text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-3">
+              <button className="flex-1 cursor-pointer w-full bg-gray-900 hover:bg-gray-700 text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -133,10 +133,10 @@ const ProductDetail = () => {
               </button>
 
               <div className="flex items-center gap-2">
-                <button className="p-3 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50">
+                <button className="p-3 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 cursor-pointer">
                   <FaHeart />
                 </button>
-                <button className="p-3 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50">
+                <button className="p-3 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 cursor-pointer">
                   <FaShareAlt />
                 </button>
               </div>
