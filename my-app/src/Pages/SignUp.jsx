@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router";
 
 const SignUp = () => {
   const {
@@ -147,9 +148,9 @@ const SignUp = () => {
 
         <div className="text-center text-sm text-gray-600 mt-4">
           Already have an account?{" "}
-          <a href="/sign-in" className="text-black hover:underline">
+          <Link to={"/sign-in"} className="text-black hover:underline">
             Sign in
-          </a>
+          </Link>
         </div>
       </div>
     </div>

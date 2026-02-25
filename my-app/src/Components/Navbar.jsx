@@ -63,10 +63,10 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex items-center gap-2 hover:opacity-70 transition-all cursor-pointer bg-[#c8d3d7] rounded-sm px-4 py-1">
-            <Link to="/login" className="flex items-center gap-2">
+            <Link to="/sign-in" className="flex items-center gap-2">
               <FaRegUser className="text-lg md:text-2xl" />
               <button className="cursor-pointer text-base md:text-lg text-[--text-color] hover:opacity-70 transition-all">
-                Sign-in
+                Sign in
               </button>
             </Link>
           </div>
