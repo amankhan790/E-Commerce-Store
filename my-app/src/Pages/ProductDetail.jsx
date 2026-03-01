@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { StoreContext } from "../Context/StoreContext";
 import {
@@ -12,7 +12,7 @@ import {
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const { getProductById } = useContext(StoreContext);
+  const { getProductById, addCartItem, cartItem } = useContext(StoreContext);
 
   const product = getProductById(id);
 
@@ -114,23 +114,34 @@ const ProductDetail = () => {
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row items-center sm:items-stretch gap-4">
-              <button className="flex-1 cursor-pointer w-full bg-gray-900 hover:bg-gray-700 text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4"
-                  />
-                </svg>
-                Add to Cart
-              </button>
+              <div className="flex-1 w-full">
+                <div className="w-full bg-gray-900 hover:bg-gray-700 text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4"
+                    />
+                  </svg>
+                  {!cartItem[String(product.id)] ? (
+                    <Link to={"/cart"} onClick={() => addCartItem(product.id)} className="flex items-center">
+                      Add to Cart
+                    </Link>
+                  ) : (
+                    <Link to="/cart" className="flex items-center gap-2">
+                      View Cart
+                      <span className="bg-white text-gray-900 rounded-full px-2 py-0.5 text-sm">{cartItem[String(product.id)]}</span>
+                    </Link>
+                  )}
+                </div>
+              </div>
 
               <div className="flex items-center gap-2">
                 <button className="p-3 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 cursor-pointer">
@@ -141,6 +152,7 @@ const ProductDetail = () => {
                 </button>
               </div>
             </div>
+           
 
             <div className="mt-6 border-t pt-4 text-sm text-gray-500 flex gap-8">
               <div className="flex items-center gap-3">
@@ -179,42 +191,3 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-
-// import { useContext } from "react";
-// import { useParams } from "react-router-dom";
-// import { StoreContext } from "../Context/StoreContext";
-// import { FaStar } from "react-icons/fa";
-
-// const ProductDetail = () => {
-//   const { id } = useParams();
-//   const { getProductById } = useContext(StoreContext);
-//   const product = getProductById(id)
-
-//   if (!product) {
-//     return (
-//       <div className="max-w-5xl mx-auto my-16 p-6 bg-white/30 rounded-xl border border-gray-200">
-//         <p className="text-center text-lg">Product not found.</p>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="max-w-6xl mx-auto my-12 p-6">
-//       <div className="bg-[var(--background-color)] rounded-2xl p-6 border-2 border-[var(--text-color)]">
-//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-//           <div className="w-full">
-//             <img
-//               src={product.img}
-//               alt={product.name}
-//               className="w-full h-96 object-cover rounded-xl shadow-md"
-//             />
-//           </div>
-
-//           <div className="flex flex-col">
-//             <p className="text-sm text-gray-600 mb-2">{product.category}</p>
-
-//             <h1 className="text-2xl md:text-3xl font-bold mb-3">{product.name}</h1>
-
-//             <div className="flex items-center gap-4 mb-4">
-//               <div className="flex items-center text-lg text-[var(--text-color)] font-semibold">
-//                 *** End Patch
