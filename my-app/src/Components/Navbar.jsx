@@ -106,18 +106,26 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-[#E9EBED] rounded-b-3xl mx-5 mt-2 p-4">
           <ul className="flex flex-col gap-4 text-base text-[--text-color]">
-            <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold">
-              Home
-            </li>
-            <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold">
-              Product
-            </li>
-            <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold">
-              Category
-            </li>
-            <button className="cursor-pointer py-2 text-left hover:font-semibold">
-              Login
-            </button>
+            <Link to={"/"}>
+              <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold">
+                Home
+              </li>
+            </Link>
+            <Link to={"/products"}>
+              <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold">
+                Product
+              </li>
+            </Link>
+            <Link to={"/products"}>
+              <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold">
+                Category
+              </li>
+            </Link>
+            <Link to={"/sign-in"}>
+              <button className="cursor-pointer py-2 text-left hover:font-semibold">
+                Login
+              </button>
+            </Link>
           </ul>
         </div>
       )}
