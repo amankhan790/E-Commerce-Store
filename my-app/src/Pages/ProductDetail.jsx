@@ -131,13 +131,19 @@ const ProductDetail = () => {
                     />
                   </svg>
                   {!cartItem[String(product.id)] ? (
-                    <Link to={"/cart"} onClick={() => addCartItem(product.id)} className="flex items-center">
+                    <Link
+                      to={"/cart"}
+                      onClick={() => addCartItem(product.id)}
+                      className="flex items-center"
+                    >
                       Add to Cart
                     </Link>
                   ) : (
                     <Link to="/cart" className="flex items-center gap-2">
                       View Cart
-                      <span className="bg-white text-gray-900 rounded-full px-2 py-0.5 text-sm">{cartItem[String(product.id)]}</span>
+                      <span className="bg-white text-gray-900 rounded-full px-2 py-0.5 text-sm">
+                        {cartItem[String(product.id)]}
+                      </span>
                     </Link>
                   )}
                 </div>
@@ -152,7 +158,6 @@ const ProductDetail = () => {
                 </button>
               </div>
             </div>
-           
 
             <div className="mt-6 border-t pt-4 text-sm text-gray-500 flex gap-8">
               <div className="flex items-center gap-3">

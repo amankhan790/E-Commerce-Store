@@ -81,13 +81,17 @@ const Navbar = () => {
         {/* Mobile Icons & Hamburger */}
         <div className=" md:hidden flex items-center gap-5">
           <div className="relative flex items-center gap-2 cursor-pointer">
-            <FaShoppingCart className="text-xl" />
-            <span className="absolute top-[-12px] right-[-12px] text-[12px] font-bold">
-              {getTotalCartItems()}
-            </span>
+            <Link to={"/cart"}>
+              <FaShoppingCart className="text-xl" />
+              <span className="absolute top-[-12px] right-[-12px] text-[12px] font-bold">
+                {getTotalCartItems()}
+              </span>
+            </Link>
           </div>
           <div className="flex items-center gap-2 cursor-pointer">
-            <FaRegUser className="text-xl" />
+            <Link to="/sign-in">
+              <FaRegUser className="text-xl" />
+            </Link>
           </div>
           <button
             onClick={toggleMenu}

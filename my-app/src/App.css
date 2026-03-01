@@ -20,12 +20,12 @@ body {
 }
 
 .app {
-  max-width: 80%;
+  width: 90%;
   margin: auto;
 }
 
 @media (max-width: 1024px) {
   .app {
-    max-width: 85%;
+    max-width: 90%;
   }
 }
