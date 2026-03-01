@@ -75,7 +75,9 @@ const StoreContextProvider = (props) => {
       setProducts(AllProducts);
       return;
     }
-    const filtered = AllProducts.filter((product) => product.category === category);
+    const filtered = AllProducts.filter(
+      (product) => product.category === category,
+    );
     setProducts(filtered);
   };
 
@@ -93,7 +95,11 @@ const StoreContextProvider = (props) => {
     filterByCategory,
   };
 
-  return <StoreContext.Provider value={contextValue}>{props.children}</StoreContext.Provider>;
+  return (
+    <StoreContext.Provider value={contextValue}>
+      {props.children}
+    </StoreContext.Provider>
+  );
 };
 
 export default StoreContextProvider;

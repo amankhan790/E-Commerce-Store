@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { StoreContext } from "../Context/StoreContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { getTotalCartItems } = useContext(StoreContext);
+  console.log(getTotalCartItems);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,10 +59,13 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Icons */}
-        <div className="hidden md:flex items-center gap-3">
-          <div className="flex items-center gap-2 cursor-pointer hover:opacity-70 transition-all">
+        <div className="hidden md:flex items-center gap-4">
+          <div className="relative flex items-center gap-2 cursor-pointer hover:opacity-70 transition-all">
             <Link to="/cart">
-              <FaShoppingCart className="text-lg md:text-2xl" />
+              <FaShoppingCart className="text-lg md:text-2xl" />{" "}
+              <span className="absolute top-[-12px] right-[-12px] text-[12px] font-bold">
+                {getTotalCartItems()}
+              </span>
             </Link>
           </div>
           <div className="flex items-center gap-2 hover:opacity-70 transition-all cursor-pointer bg-[#c8d3d7] rounded-sm px-4 py-1">
@@ -73,9 +79,12 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Icons & Hamburger */}
-        <div className="md:hidden flex items-center gap-5">
-          <div className="flex items-center gap-2 cursor-pointer">
+        <div className=" md:hidden flex items-center gap-5">
+          <div className="relative flex items-center gap-2 cursor-pointer">
             <FaShoppingCart className="text-xl" />
+            <span className="absolute top-[-12px] right-[-12px] text-[12px] font-bold">
+              {getTotalCartItems()}
+            </span>
           </div>
           <div className="flex items-center gap-2 cursor-pointer">
             <FaRegUser className="text-xl" />
