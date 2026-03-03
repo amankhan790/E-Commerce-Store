@@ -24,7 +24,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="min-h-screen text-white py-8 px-4">
+    <div className="min-h-screen  text-white py-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-6">
@@ -56,7 +56,7 @@ const Cart = () => {
               {cartProducts.map(({ product, quantity }) => (
                 <div
                   key={product.id}
-                  className="flex items-center gap-4 border border-[#000] rounded-2xl p-4 "
+                  className="flex items-center gap-2 lg:gap-4 border border-[#000] rounded-2xl p-3 lg:p-4 "
                 >
                   {/* Product Image */}
                   <img
@@ -75,7 +75,7 @@ const Cart = () => {
                     </p>
 
                     {/* Quantity Controls */}
-                    <div className="flex items-center gap-3 mt-3">
+                    <div className="flex items-center lg:gap-3 mt-3">
                       <div className="flex items-center bg-gray-300 border border-black rounded-lg overflow-hidden">
                         <button
                           className="px-3 py-2 text-black transition-colors cursor-pointer"
@@ -84,7 +84,7 @@ const Cart = () => {
                         >
                           <FaMinus size={10} />
                         </button>
-                        <div className="px-4 py-2 text-black font-semibold min-w-[2.5rem] text-center">
+                        <div className="lg:px-4 lg:py-2 text-black font-semibold min-w-[2.5rem] text-center">
                           {quantity}
                         </div>
                         <button
