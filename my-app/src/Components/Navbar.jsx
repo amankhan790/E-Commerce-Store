@@ -33,9 +33,11 @@ const Navbar = () => {
     >
       <div className="flex justify-between items-center  px-8 py-5 md:px-10  md:mx-0">
         {/* Logo */}
-        <h2 className="text-xl md:text-2xl text-[--text-color] font-semibold">
-          AK Tech
-        </h2>
+        <Link to={"/"}>
+          <h2 className="text-xl md:text-2xl text-[--text-color] font-semibold">
+            AK Tech
+          </h2>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex">

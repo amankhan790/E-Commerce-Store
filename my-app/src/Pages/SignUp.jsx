@@ -69,7 +69,7 @@ const SignUp = () => {
               placeholder="you@gmail.com"
               className="w-full px-4 py-2 bg-[#c8d3d7] border border-gray-200 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400"
               {...register("email", {
-                required: { value: true, message: "Username required" },
+                required: { value: true, message: "email required" },
                 validate: (value) => {
                   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
                     return "Enter a valid email address";
@@ -139,7 +139,7 @@ const SignUp = () => {
 
           <button
             type="submit"
-            className="w-full mt-2 inline-flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-700 text-white font-medium py-2 rounded-md transition"
+            className="w-full mt-2 inline-flex cursor-pointer items-center justify-center gap-2 bg-gray-900 hover:bg-gray-700 text-white font-medium py-2 rounded-md transition"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Creating..." : "Sign up"}
@@ -148,7 +148,7 @@ const SignUp = () => {
 
         <div className="text-center text-sm text-gray-600 mt-4">
           Already have an account?{" "}
-          <Link to={"/sign-in"} className="text-black hover:underline">
+          <Link to={"/sign-in"} className="text-black hover:underline ">
             Sign in
           </Link>
         </div>
