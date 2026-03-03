@@ -4,6 +4,7 @@ import { AllProducts } from "../assets/assets";
 export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
   const [products, setProducts] = useState(AllProducts);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const [cartItem, setCartItem] = useState(() => {
     try {
@@ -71,19 +72,21 @@ const StoreContextProvider = (props) => {
   };
 
   const filterByCategory = (category) => {
-    if (!category || category === "All") {
+    const cat = category || "All";
+    setSelectedCategory(cat);
+    if (cat === "All") {
       setProducts(AllProducts);
       return;
     }
-    const filtered = AllProducts.filter(
-      (product) => product.category === category,
-    );
+    const filtered = AllProducts.filter((product) => product.category === cat);
     setProducts(filtered);
   };
 
   const contextValue = {
     products,
     setProducts,
+    selectedCategory,
+    setSelectedCategory,
     cartItem,
     addCartItem,
     removeCartItem,

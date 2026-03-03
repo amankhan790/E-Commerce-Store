@@ -1,11 +1,15 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { StoreContext } from "../Context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
-const Category = ({ navigateOnClick = false, selectedCategories: outerSelected, setSelectedCategories: outerSetSelected }) => {
-  const { filterByCategory } = useContext(StoreContext);
+const Category = ({
+  navigateOnClick = false,
+  selectedCategories: outerSelected,
+  setSelectedCategories: outerSetSelected,
+}) => {
+  const {  } = useContext(StoreContext);
   const navigate = useNavigate();
-  const [selectedCategories, setSelectedCategories] = useState("All");
+  const { selectedCategory, setSelectedCategory, filterByCategory } = useContext(StoreContext);
   const categories = [
     "All",
     "Electronics",
@@ -16,8 +20,10 @@ const Category = ({ navigateOnClick = false, selectedCategories: outerSelected, 
     "Clothing",
   ];
 
-  const isControlled = typeof outerSelected !== "undefined" && typeof outerSetSelected === "function";
-  const currentSelected = isControlled ? outerSelected : selectedCategories;
+  const isControlled =
+    typeof outerSelected !== "undefined" &&
+    typeof outerSetSelected === "function";
+  const currentSelected = isControlled ? outerSelected : selectedCategory;
 
   return (
     <div>
@@ -29,7 +35,7 @@ const Category = ({ navigateOnClick = false, selectedCategories: outerSelected, 
           <button
             key={cat}
             onClick={() => {
-              const setSel = isControlled ? outerSetSelected : setSelectedCategories;
+              const setSel = isControlled ? outerSetSelected : setSelectedCategory;
               setSel(cat);
               filterByCategory(cat);
               if (navigateOnClick) navigate("/products");
