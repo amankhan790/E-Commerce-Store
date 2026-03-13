@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaTrash, FaPlus, FaMinus, FaArrowLeft } from "react-icons/fa";
 import { StoreContext } from "../Context/StoreContext";
+import { toast, Bounce } from "react-toastify";
 
 const Cart = () => {
   const {
@@ -21,6 +22,20 @@ const Cart = () => {
     for (let i = 0; i < quantity; i++) {
       removeCartItem(productId);
     }
+  };
+
+  const removedFromCart = () => {
+    toast.success("Removed Successfully ❌", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   };
 
   return (
@@ -105,7 +120,10 @@ const Cart = () => {
                     </span>
                     <button
                       className="flex items-center gap-1.5 text-red-500 hover:text-red-400 text-sm transition-colors cursor-pointer"
-                      onClick={() => removeAllOf(product.id, quantity)}
+                      onClick={() => {
+                        removeAllOf(product.id, quantity);
+                        removedFromCart();
+                      }}
                     >
                       <FaTrash size={12} />
                       <span>Remove</span>
@@ -146,7 +164,20 @@ const Cart = () => {
               </button>
               <button
                 className="w-full py-2.5 border border-gray-700 text-black font-bold cursor-pointer rounded-xl hover:bg-gray-800 hover:text-white transition-colors text-sm"
-                onClick={clearCart}
+                onClick={() => {
+                  clearCart();
+                  toast.success("Cart Cleared 🧹", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                  });
+                }}
               >
                 Clear Cart
               </button>

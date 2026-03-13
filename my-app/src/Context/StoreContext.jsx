@@ -82,6 +82,9 @@ const StoreContextProvider = (props) => {
     setProducts(filtered);
   };
 
+  
+  
+
   const contextValue = {
     products,
     setProducts,

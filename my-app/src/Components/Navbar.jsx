@@ -9,7 +9,6 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { getTotalCartItems } = useContext(StoreContext);
-  console.log(getTotalCartItems);
 
   useEffect(() => {
     const handleScroll = () => {

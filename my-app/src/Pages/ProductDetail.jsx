@@ -9,6 +9,7 @@ import {
   FaShareAlt,
   FaCheck,
 } from "react-icons/fa";
+import { toast,Bounce } from "react-toastify";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -35,6 +36,20 @@ const ProductDetail = () => {
     "Designed for comfort",
     "10-day returns",
   ];
+
+  const addedToCart = () => {
+    toast.success("Added Successfully ✅", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+  };
 
   return (
     <div className="max-w-6xl mx-auto my-12 px-4 sm:px-6 lg:px-8">
@@ -132,8 +147,11 @@ const ProductDetail = () => {
                   </svg>
                   {!cartItem[String(product.id)] ? (
                     <Link
-                      to={"/cart"}
-                      onClick={() => addCartItem(product.id)}
+                      // to={"/cart"}
+                      onClick={() => {
+                        addCartItem(product.id);
+                        addedToCart();
+                      }}
                       className="flex items-center"
                     >
                       Add to Cart
