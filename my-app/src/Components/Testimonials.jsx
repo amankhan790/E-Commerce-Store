@@ -1,25 +1,34 @@
 import React from "react";
+import emillyImg from "../assets/testimonals/emilly.jpg";
+import carlosImg from "../assets/testimonals/carlos.jpg";
+import aishaImg from "../assets/testimonals/aisha.jpg";
+import liamImg from "../assets/testimonals/liam.jpg";
+
 
 const testimonials = [
   {
     name: "Emily R.",
     role: "Fashion Enthusiast",
     text: "Fantastic selection and fast delivery. I found exactly what I wanted and the checkout was smooth. Highly recommend!",
+    image: emillyImg,
   },
   {
     name: "Carlos M.",
     role: "Home Decor Lover",
     text: "Great quality and the product matched the photos perfectly. Customer support helped me pick the right size.",
+    image: carlosImg,
   },
   {
     name: "Aisha K.",
     role: "Athlete",
     text: "My order arrived earlier than expected and the sports gear is top-notch. I'll be shopping here again.",
+    image: aishaImg,
   },
   {
     name: "Liam T.",
     role: "Gadget Fan",
     text: "Excellent prices and secure payments. The electronics arrived well-packaged and work great.",
+    image: liamImg,
   },
 ];
 
@@ -41,13 +50,11 @@ const Testimonials = () => {
               className="border rounded-lg p-5 shadow-sm bg-gray-300 flex flex-col"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center text-green-800 font-semibold">
-                  {t.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .slice(0, 2)
-                    .join("")}
-                </div>
+                <img
+                  src={t.image}
+                  alt={t.name}
+                  className="w-12 h-12 rounded-full object-cover border border-gray-200"
+                />
                 <div>
                   <p className="font-semibold">{t.name}</p>
                   <p className="text-sm text-gray-500">{t.role}</p>
