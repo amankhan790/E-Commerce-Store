@@ -22,6 +22,20 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen || window.innerWidth >= 768) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    // Lock background scroll while the mobile menu is open.
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -104,32 +118,44 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-[#E9EBED] rounded-b-3xl mx-5 mt-2 p-4">
-          <ul className="flex flex-col gap-4 text-base text-[--text-color]">
+      <div
+        onClick={toggleMenu}
+        className={`md:hidden fixed inset-0 z-40 px-5 pt-24 pb-6 bg-black/20 backdrop-blur-[2px] transition-all duration-300 ease-out ${
+          isMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className={`bg-[#E9EBED] rounded-3xl p-5 shadow-xl border border-white/60 transition-all duration-300 ease-out ${
+            isMenuOpen ? "translate-y-0 scale-100" : "-translate-y-4 scale-95"
+          }`}
+        >
+          <ul className="flex flex-col gap-3 text-base text-[--text-color]">
             <Link to={"/"} onClick={toggleMenu}>
-              <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold">
+              <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold hover:pl-1 transition-all duration-200">
                 Home
               </li>
             </Link>
             <Link to={"/products"} onClick={toggleMenu}>
-              <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold">
+              <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold hover:pl-1 transition-all duration-200">
                 Product
               </li>
             </Link>
             <Link to={"/products"} onClick={toggleMenu}>
-              <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold">
+              <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold hover:pl-1 transition-all duration-200">
                 Category
               </li>
             </Link>
             <Link to={"/sign-in"} onClick={toggleMenu}>
-              <button className="cursor-pointer py-2 text-left hover:font-semibold">
+              <li className="cursor-pointer py-2 hover:font-semibold hover:pl-1 transition-all duration-200">
                 Login
-              </button>
+              </li>
             </Link>
           </ul>
         </div>
-      )}
+      </div>
     </div>
   );
 };

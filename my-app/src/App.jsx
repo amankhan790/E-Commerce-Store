@@ -9,7 +9,7 @@ import Products from "./Pages/Products";
 import About from "./Pages/About";
 import SignUp from "./Pages/SignUp";
 import SignIn from "./Pages/SignIn";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
