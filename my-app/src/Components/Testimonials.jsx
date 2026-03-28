@@ -4,7 +4,6 @@ import carlosImg from "../assets/testimonals/carlos.jpg";
 import aishaImg from "../assets/testimonals/aisha.jpg";
 import liamImg from "../assets/testimonals/liam.jpg";
 
-
 const testimonials = [
   {
     name: "Emily R.",

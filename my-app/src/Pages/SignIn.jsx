@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
+import { useNavigate } from "react-router-dom";
+import { StoreContext } from "../Context/StoreContext";
+import { toast, Bounce } from "react-toastify";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const { signIn } = useContext(StoreContext);
+
   const {
     register,
     handleSubmit,
+    setValue,
     reset,
     formState: { errors, isSubmitting },
   } = useForm();
@@ -18,8 +25,52 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     await delay(2); // simulate network delay
-    console.log(data);
+    const user = signIn({ email: data.email, password: data.password });
+
+    toast.success(
+      user.role === "demo" ? "Welcome Aman ✅" : "Signed in ✅",
+      {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      },
+    );
+
     reset();
+
+    if (user.role === "demo") {
+      navigate("/dashboard", { replace: true });
+    } else {
+      navigate("/", { replace: true });
+    }
+  };
+
+  const signInAsDemo = () => {
+    setValue("email", "demo@ayashtech.com", { shouldValidate: true });
+    setValue("password", "demo1234", { shouldValidate: true });
+
+    const user = signIn({ email: "demo@ayashtech.com", password: "demo1234" });
+
+    toast.success(`Welcome ${user.name || "Aman"} ✅`, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+
+    reset();
+    navigate("/dashboard", { replace: true });
   };
 
   return (
@@ -97,6 +148,16 @@ const SignIn = () => {
           <Link to={"/sign-up"} className="text-black hover:underline">
             Create Account
           </Link>
+        </div>
+
+        <div className="text-center text-sm text-gray-600 mt-4">
+          <button
+            type="button"
+            onClick={signInAsDemo}
+            className="text-black hover:underline cursor-pointer"
+          >
+            Use demo account (Aman)
+          </button>
         </div>
       </div>
     </div>

@@ -3,14 +3,27 @@ import { AllProducts } from "../assets/assets";
 
 export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
+  const DEMO_EMAILS = new Set(["demo@ayashtech.com"]);
+  const DEMO_PASSWORDS = new Set(["demo1234"]);
+  const DEMO_NAME = "Aman";
+
   const [products, setProducts] = useState(AllProducts);
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const [auth, setAuth] = useState(() => {
+    try {
+      const raw = localStorage.getItem("auth");
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  });
 
   const [cartItem, setCartItem] = useState(() => {
     try {
       const raw = localStorage.getItem("cart");
       return raw ? JSON.parse(raw) : {};
-    } catch (e) {
+    } catch {
       return {};
     }
   });
@@ -18,10 +31,47 @@ const StoreContextProvider = (props) => {
   useEffect(() => {
     try {
       localStorage.setItem("cart", JSON.stringify(cartItem));
-    } catch (e) {
+    } catch {
       // ignore storage errors
     }
   }, [cartItem]);
+
+  useEffect(() => {
+    try {
+      if (!auth) {
+        localStorage.removeItem("auth");
+        return;
+      }
+      localStorage.setItem("auth", JSON.stringify(auth));
+    } catch {
+      // ignore storage errors
+    }
+  }, [auth]);
+
+  const signIn = ({ email, password }) => {
+    const normalizedEmail = String(email || "")
+      .trim()
+      .toLowerCase();
+    const normalizedPassword = String(password || "");
+
+    const isDemoLogin =
+      DEMO_EMAILS.has(normalizedEmail) &&
+      DEMO_PASSWORDS.has(normalizedPassword);
+
+    const user = {
+      email: normalizedEmail,
+      name: isDemoLogin ? DEMO_NAME : "Guest",
+      role: isDemoLogin ? "demo" : "user",
+    };
+
+    setAuth({ user });
+    return user;
+  };
+
+  const signOut = () => setAuth(null);
+
+  const isDemo = auth?.user?.role === "demo";
+  const isDashboardUser = isDemo;
 
   const addCartItem = (itemId) => {
     const key = String(itemId);
@@ -82,14 +132,16 @@ const StoreContextProvider = (props) => {
     setProducts(filtered);
   };
 
-  
-  
-
   const contextValue = {
     products,
     setProducts,
     selectedCategory,
     setSelectedCategory,
+    auth,
+    signIn,
+    signOut,
+    isDemo,
+    isDashboardUser,
     cartItem,
     addCartItem,
     removeCartItem,

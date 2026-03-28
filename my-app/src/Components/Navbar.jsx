@@ -2,13 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../Context/StoreContext";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { getTotalCartItems } = useContext(StoreContext);
+  const { getTotalCartItems, isDashboardUser, auth, signOut } =
+    useContext(StoreContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +42,12 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleSignOut = () => {
+    signOut();
+    setIsMenuOpen(false);
+    navigate("/", { replace: true });
+  };
+
   return (
     <div
       className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#e9ebed] shadow-lg bg-opacity-90 backdrop-blur" : ""}`}
@@ -60,6 +68,13 @@ const Navbar = () => {
                 Home
               </li>
             </Link>
+            {isDashboardUser ? (
+              <Link to={"/dashboard"}>
+                <li className="cursor-pointer hover:font-semibold transition-300">
+                  Dashboard
+                </li>
+              </Link>
+            ) : null}
             <Link to={"/products"}>
               <li className="cursor-pointer hover:font-semibold transition-300">
                 Product
@@ -78,18 +93,30 @@ const Navbar = () => {
           <div className="relative flex items-center gap-2 cursor-pointer hover:opacity-70 transition-all">
             <Link to="/cart">
               <FaShoppingCart className="text-lg md:text-2xl" />{" "}
-              <span className="absolute top-[-12px] right-[-12px] text-[12px] font-bold">
+              <span className="absolute -top-3 -right-3 text-[12px] font-bold">
                 {getTotalCartItems()}
               </span>
             </Link>
           </div>
           <div className="flex items-center gap-2 hover:opacity-70 transition-all cursor-pointer bg-[#c8d3d7] rounded-sm px-4 py-1">
-            <Link to="/sign-in" className="flex items-center gap-2">
-              <FaRegUser className="text-lg md:text-2xl" />
-              <button className="cursor-pointer text-base md:text-lg text-[--text-color] hover:opacity-70 transition-all">
-                Sign in
-              </button>
-            </Link>
+            {auth?.user ? (
+              <div className="flex items-center gap-2">
+                <FaRegUser className="text-lg md:text-2xl" />
+                <button
+                  className="cursor-pointer text-base md:text-lg text-[--text-color] hover:opacity-70 transition-all"
+                  onClick={handleSignOut}
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link to="/sign-in" className="flex items-center gap-2">
+                <FaRegUser className="text-lg md:text-2xl" />
+                <button className="cursor-pointer text-base md:text-lg text-[--text-color] hover:opacity-70 transition-all">
+                  Sign in
+                </button>
+              </Link>
+            )}
           </div>
         </div>
 
@@ -98,15 +125,21 @@ const Navbar = () => {
           <div className="relative flex items-center gap-2 cursor-pointer">
             <Link to={"/cart"}>
               <FaShoppingCart className="text-xl" />
-              <span className="absolute top-[-12px] right-[-12px] text-[12px] font-bold">
+              <span className="absolute -top-3 -right-3 text-[12px] font-bold">
                 {getTotalCartItems()}
               </span>
             </Link>
           </div>
           <div className="flex items-center gap-2 cursor-pointer">
-            <Link to="/sign-in">
-              <FaRegUser className="text-xl" />
-            </Link>
+            {auth?.user ? (
+              <button onClick={handleSignOut}>
+                <FaRegUser className="text-xl" />
+              </button>
+            ) : (
+              <Link to="/sign-in">
+                <FaRegUser className="text-xl" />
+              </Link>
+            )}
           </div>
           <button
             onClick={toggleMenu}
@@ -138,6 +171,13 @@ const Navbar = () => {
                 Home
               </li>
             </Link>
+            {isDashboardUser ? (
+              <Link to={"/dashboard"} onClick={toggleMenu}>
+                <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold hover:pl-1 transition-all duration-200">
+                  Dashboard
+                </li>
+              </Link>
+            ) : null}
             <Link to={"/products"} onClick={toggleMenu}>
               <li className="cursor-pointer py-2 border-b border-gray-300 hover:font-semibold hover:pl-1 transition-all duration-200">
                 Product
@@ -148,11 +188,20 @@ const Navbar = () => {
                 Category
               </li>
             </Link>
-            <Link to={"/sign-in"} onClick={toggleMenu}>
-              <li className="cursor-pointer py-2 hover:font-semibold hover:pl-1 transition-all duration-200">
-                Login
+            {auth?.user ? (
+              <li
+                className="cursor-pointer py-2 hover:font-semibold hover:pl-1 transition-all duration-200"
+                onClick={handleSignOut}
+              >
+                Logout
               </li>
-            </Link>
+            ) : (
+              <Link to={"/sign-in"} onClick={toggleMenu}>
+                <li className="cursor-pointer py-2 hover:font-semibold hover:pl-1 transition-all duration-200">
+                  Login
+                </li>
+              </Link>
+            )}
           </ul>
         </div>
       </div>
