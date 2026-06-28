@@ -9,13 +9,16 @@ import Products from "./Pages/Products";
 import About from "./Pages/About";
 import SignUp from "./Pages/SignUp";
 import SignIn from "./Pages/SignIn";
-import Dashboard from "./Pages/Dashboard";
+import Checkout from "./Pages/Checkout";
+import Orders from "./Pages/Orders";
+import Profile from "./Pages/Profile";
+import Wishlist from "./Pages/Wishlist";
+import AdminPanel from "./Pages/AdminPanel";
 import { ToastContainer } from "react-toastify";
-import { useContext } from "react";
-import { StoreContext } from "./Context/StoreContext";
+import { useSelector } from "react-redux";
 
 function App() {
-  const { isDashboardUser } = useContext(StoreContext);
+  const isDashboardUser = useSelector((state) => state.auth.isDashboardUser);
 
   return (
     <>
@@ -25,13 +28,24 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route
             path="/dashboard"
             element={
-              isDashboardUser ? <Dashboard /> : <Navigate to="/sign-in" replace />
+              isDashboardUser ? <AdminPanel /> : <Navigate to="/sign-in" replace />
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              isDashboardUser ? <AdminPanel /> : <Navigate to="/sign-in" replace />
             }
           />
           <Route path="/sign-in" element={<SignIn />} />

@@ -1,18 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { StoreContext } from "../Context/StoreContext";
-import { toast, Bounce } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { signUp } from "../features/auth/authSlice";
+import { toast } from "react-toastify";
 
-const SignIn = () => {
+const SignUp = () => {
   const navigate = useNavigate();
-  const { signIn } = useContext(StoreContext);
+  const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
-    setValue,
+    watch,
     reset,
     formState: { errors, isSubmitting },
   } = useForm();
@@ -25,61 +26,46 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     await delay(2); // simulate network delay
-    const user = signIn({ email: data.email, password: data.password });
-
-    toast.success(
-      user.role === "demo" ? "Welcome Aman ✅" : "Signed in ✅",
-      {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
-      },
-    );
-
+    dispatch(signUp({ email: data.email, name: data.username }));
+    toast.success("Account created successfully!");
     reset();
-
-    if (user.role === "demo") {
-      navigate("/dashboard", { replace: true });
-    } else {
-      navigate("/", { replace: true });
-    }
-  };
-
-  const signInAsDemo = () => {
-    setValue("email", "demo@ayashtech.com", { shouldValidate: true });
-    setValue("password", "demo1234", { shouldValidate: true });
-
-    const user = signIn({ email: "demo@ayashtech.com", password: "demo1234" });
-
-    toast.success(`Welcome ${user.name || "Aman"} ✅`, {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
-
-    reset();
-    navigate("/dashboard", { replace: true });
+    navigate("/", { replace: true });
   };
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center py-12 px-4">
       <div className="w-full max-w-md bg-[#c8d3d7] backdrop-blur-lg shadow-lg rounded-lg p-8">
-        <h2 className="text-2xl font-semibold text-black mb-4">Welcome Back</h2>
-        <p className="text-sm text-gray-600 mb-6">SignIn to your account</p>
+        <h2 className="text-2xl font-semibold text-black mb-4">
+          Create an account
+        </h2>
+        <p className="text-sm text-gray-600 mb-6">
+          Join us — create your account to start shopping.
+        </p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div>
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Username
+            </label>
+            <input
+              type="text"
+              placeholder="Enter username"
+              className="w-full px-4 py-2 bg-[#c8d3d7] border border-gray-200 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400"
+              {...register("username", {
+                minLength: { value: 3, message: "Min length is 3" },
+                maxLength: { value: 32, message: "Max length is 32" },
+                required: { value: true, message: "Username required" },
+              })}
+            />
+            {errors.username && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.username.message}
+              </p>
+            )}
+          </div>
           <div>
             <label
               htmlFor="email"
@@ -124,6 +110,8 @@ const SignIn = () => {
               placeholder="Enter password"
               className="w-full px-4 py-2 border border-gray-200 rounded-md bg-[#c8d3d7] text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400"
               {...register("password", {
+                minLength: { value: 6, message: "Min length is 6" },
+                maxLength: { value: 8, message: "Max length is 8" },
                 required: { value: true, message: "Password required" },
               })}
             />
@@ -133,35 +121,49 @@ const SignIn = () => {
               </p>
             )}
           </div>
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Confirm
+            </label>
+            <input
+              id="confrimPassword"
+              type="password"
+              placeholder="Confirm password"
+              className="w-full px-4 py-2 border border-gray-200 rounded-md bg-[#c8d3d7] text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400"
+              {...register("confirmPassword", {
+                required: "Confirm password is required",
+                validate: (value) =>
+                  value === watch("password") || "Passwords do not match",
+              })}
+            />
+            {errors.confirmPassword && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.confirmPassword.message}
+              </p>
+            )}
+          </div>
 
           <button
             type="submit"
             className="w-full mt-2 inline-flex cursor-pointer items-center justify-center gap-2 bg-gray-900 hover:bg-gray-700 text-white font-medium py-2 rounded-md transition"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Creating..." : "Sign In"}
+            {isSubmitting ? "Creating..." : "Sign up"}
           </button>
         </form>
 
         <div className="text-center text-sm text-gray-600 mt-4">
-          Don't have a account ?{" "}
-          <Link to={"/sign-up"} className="text-black hover:underline">
-            Create Account
+          Already have an account?{" "}
+          <Link to={"/sign-in"} className="text-black hover:underline ">
+            Sign in
           </Link>
-        </div>
-
-        <div className="text-center text-sm text-gray-600 mt-4">
-          <button
-            type="button"
-            onClick={signInAsDemo}
-            className="text-black hover:underline cursor-pointer"
-          >
-            Use demo account (Aman)
-          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default SignIn;
+export default SignUp;

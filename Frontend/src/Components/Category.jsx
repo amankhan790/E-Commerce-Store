@@ -1,15 +1,17 @@
-import { useContext } from "react";
-import { StoreContext } from "../Context/StoreContext";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setSelectedCategory } from "../features/products/productsSlice";
 
 const Category = ({
   navigateOnClick = false,
   selectedCategories: outerSelected,
   setSelectedCategories: outerSetSelected,
 }) => {
-  const {  } = useContext(StoreContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { selectedCategory, setSelectedCategory, filterByCategory } = useContext(StoreContext);
+  const selectedCategory = useSelector((state) => state.products.selectedCategory);
+  
   const categories = [
     "All",
     "Electronics",
@@ -35,16 +37,18 @@ const Category = ({
           <button
             key={cat}
             onClick={() => {
-              const setSel = isControlled ? outerSetSelected : setSelectedCategory;
-              setSel(cat);
-              filterByCategory(cat);
+              if (isControlled) {
+                outerSetSelected(cat);
+              } else {
+                dispatch(setSelectedCategory(cat));
+              }
               if (navigateOnClick) navigate("/products");
             }}
-            className={`px-7 py-2 rounded-xl font-medium cursor-pointer
+            className={`px-7 py-2 rounded-xl font-medium cursor-pointer transition-all duration-200
               ${
                 currentSelected === cat
                   ? "bg-black text-white"
-                  : "bg-gray-200 text-black"
+                  : "bg-gray-200 text-black hover:bg-gray-300"
               }`}
           >
             {cat}
