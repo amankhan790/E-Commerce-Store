@@ -11,7 +11,7 @@ const Hero = () => {
         style={{ backgroundImage: `url(${hero1})` }}
       >
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 text-[#E9EBED] text-right">
-          Welcome to AK Tech
+          Welcome to ShopEasy
         </h1>
 
         <p className="text-base sm:text-lg mb-5 text-[#E9EBED] text-right">
